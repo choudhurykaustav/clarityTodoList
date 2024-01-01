@@ -1,0 +1,12 @@
+<div class="app-herder-container">
+  <nav class="navbar navbar-expand-lg app-header-bg-color">
+    <div class="container">
+      <img src="assets/logo.png">
+      <div class="float-right" id="navbarSupportedContent">
+        <span *ngIf="currentPage === 'Todo'" class="app-header-todo-link">TODO LIST | Username: {{userDetails.userName}}
+          <button class="btn btn-danger btn-sm mx-2" (click)="logoutUser()">Logout</button>
+        </span>
+      </div>
+    </div>
+  </nav>
+</div>

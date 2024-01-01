@@ -1,0 +1,34 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm">
+      <app-create-todo></app-create-todo>
+    </div>
+    <div class="col-sm">
+      <div class="app-todo-connection-status">
+        <button type="button" class="btn btn-primary mx-2" (click)="switchView(false)" *ngIf="doneStatus">Check Pending</button>
+        <button type="button" class="btn btn-primary mx-2" (click)="switchView(true)" *ngIf="!doneStatus" >Check History</button>
+        Network Status:
+        <span *ngIf="internetStatus" class="app-connection-circle-online">Online</span>
+        <span *ngIf="!internetStatus" class="app-connection-circle-offline">Offline</span>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="app-todo-contianer container">
+  <div class="row" *ngIf="!doneStatus">
+    <div class="col-sm">
+      <app-view-todo viewType="NEW"></app-view-todo>
+    </div>
+    <div class="col-sm">
+      <app-view-todo viewType="INPROGRESS"></app-view-todo>
+    </div>
+  </div>
+  <div class="row" *ngIf="doneStatus">
+    <div class="col-sm">
+      <app-view-todo viewType="DONE"></app-view-todo>
+    </div>
+  </div>
+</div>
+
+
+

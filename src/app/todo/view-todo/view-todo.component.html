@@ -1,0 +1,52 @@
+Todo's status: {{viewType}}
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Description</th>
+      <th scope="col">Status</th>
+      <th scope="col" *ngIf="viewType != 'DONE'">Action</th>
+    </tr>
+  </thead>
+  <tbody *ngIf="viewType === 'NEW' ">
+    <tr *ngFor="let todo of todoService.todos | todoFilterByStatus: 'NEW'; index as $index">
+      <th scope="row">{{ $index + 1 }}</th>
+      <td>{{ todo.description }}</td>
+      <td>{{ todo.status }}</td>
+      <td><button class="btn btn-success btn-sm mx-1" (click)="changeTodoStatus('INPROGRESS', todo.id)">In
+          Progress</button>
+        <button class="btn btn-danger btn-sm" (click)="changeTodoStatus('DELETE', todo.id)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+  <tbody *ngIf="viewType === 'NEW' && (todoService.todos | todoFilterByStatus: 'NEW').length === 0">
+    <td colspan="4" class="app-todo-message-table">
+      No Data Found!!</td>
+  </tbody>
+  <tbody *ngIf="viewType === 'INPROGRESS'">
+    <tr *ngFor="let todo of todoService.todos | todoFilterByStatus: 'INPROGRESS'; index as $index">
+      <th scope="row">{{ $index + 1 }}</th>
+      <td>{{ todo.description }}</td>
+      <td>{{ todo.status }}</td>
+      <td><button class="btn btn-success btn-sm mx-1" (click)="changeTodoStatus('DONE', todo.id)">Done</button>
+        <button class="btn btn-info btn-sm mx-1" (click)="changeTodoStatus('NEW', todo.id)">Move to New</button>
+        <button class="btn btn-danger btn-sm" (click)="changeTodoStatus('DELETE', todo.id)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+  <tbody *ngIf="viewType === 'INPROGRESS' && (todoService.todos | todoFilterByStatus: 'INPROGRESS').length === 0">
+    <td colspan="4" class="app-todo-message-table">
+      No Data Found!!</td>
+  </tbody>
+  <tbody *ngIf="viewType === 'DONE'">
+    <tr *ngFor="let todo of todoService.todos | todoFilterByStatus: 'DONE'; index as $index">
+      <th scope="row">{{ $index + 1 }}</th>
+      <td>{{ todo.description }}</td>
+      <td>{{ todo.status }}</td>
+    </tr>
+  </tbody>
+  <tbody *ngIf="viewType === 'DONE' && (todoService.todos | todoFilterByStatus: 'DONE').length === 0">
+    <td colspan="4" class="app-todo-message-table">
+      No Data Found!!</td>
+  </tbody>
+</table>

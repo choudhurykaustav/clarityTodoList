@@ -1,0 +1,31 @@
+<div class="app-create-todo-container  container-fluid">
+  <button type="button" class="btn btn-info mx-1" (click)="openCreateTodoModal(content)">Create Todo</button>
+  <button type="button" class="btn btn-success" [disabled]="!internetStatus" (click)="saveTodo()">Submit Todo</button>
+  <span *ngIf="todoCreated" class="app-create-todo-status-green-text">Todo Created Successfully!</span>
+  <span *ngIf="todosUpdated" class="app-create-todo-status-green-text">Todo(s) Updated Successfully!</span>
+</div>
+
+
+<ng-template #content let-c="close" let-d="dismiss">
+	<div class="modal-header">
+		<h4 class="modal-title" id="modal-basic-title">Create Todo!</h4>
+		<button type="button" class="btn-close" aria-label="Close" (click)="cancelTodo()"></button>
+	</div>
+	<div class="modal-body">
+		<form [formGroup]="createTodoForm">
+      <div class="form-group">
+        <label for="userName">Todo Description</label>
+        <input type="text" class="form-control" id="todoDescription" aria-describedby="descriptionHelp"
+          placeholder="Enter todo description" formControlName="description">
+        <small id="descriptionHelp" class="form-text text-muted">A small description for the TODO item. (Min 10 Character)</small>
+      </div>
+      <div class="app-user-form-button-container d-grid">
+      </div>
+    </form>
+	</div>
+	<div class="modal-footer">
+    <button type="button" class="btn btn-danger" (click)="cancelTodo()">Cancel</button>
+		<button type="button" class="btn btn-success" (click)="createTodo()" [disabled]="!createTodoForm.valid">Create Todo</button>
+	</div>
+</ng-template>
+

@@ -1,0 +1,30 @@
+@import '../../../styles/helpers/helpers.scss';
+
+.app-todo-contianer{
+  padding-top: 20px;
+}
+
+.app-todo-connection-status{
+  padding-top: 20px;
+  display: inline-block;
+  width: 100%;
+  text-align: right;
+}
+
+.app-connection-circle-online{
+  display: inline-block;
+  border-radius: 30px;
+  background-color: $G;
+  color: $W;
+  padding: 5px;
+  transition: background-color 1s;
+}
+
+.app-connection-circle-offline{
+  display: inline-block;
+  border-radius: 30px;
+  background-color: $R;
+  color: $W;
+  padding: 5px;
+  transition: background-color 1s;
+}

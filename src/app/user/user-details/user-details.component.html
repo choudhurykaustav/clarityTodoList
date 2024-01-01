@@ -1,0 +1,14 @@
+<div class="app-user-container container">
+
+  <form class="app-user-form-container" [formGroup]="userForm">
+    <div class="form-group">
+      <label for="userName">Username</label>
+      <input type="text" class="form-control" id="userName" aria-describedby="userNameHelp"
+        placeholder="Enter user name" formControlName="userName">
+      <small id="userNameHelp" class="form-text text-muted">We'll never share your details with anyone else.</small>
+    </div>
+    <div class="app-user-form-button-container d-grid">
+      <button type="button" class="btn btn-success" (click)="onSubmit()">Submit</button>
+    </div>
+  </form>
+</div>

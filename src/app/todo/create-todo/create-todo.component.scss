@@ -1,0 +1,18 @@
+@import "../../../styles/helpers/helpers.scss";
+
+.app-create-todo-container {
+  padding-top: 20px;
+}
+
+.app-create-todo-status-red-text{
+  font-weight: 700;
+  padding-left: 10px;
+  color: $R;
+}
+
+.app-create-todo-status-green-text{
+  font-weight: 700;
+  padding-left: 10px;
+  color: $G;
+}
+
